@@ -32,6 +32,8 @@
 <definition name="regi.tiles" template="/WEB-INF/views/login/regi.jsp">
 </definition>
 
+<definition name="tab4.tiles" template="/WEB-INF/views/tabs/tab4.jsp">
+</definition>
 
 <definition name="calendar.tiles" extends="bbslist.tiles">
 <put-attribute name="left_main" value="/WEB-INF/views/common/left_callist.jsp" />

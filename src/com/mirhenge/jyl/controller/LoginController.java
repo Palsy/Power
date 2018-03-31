@@ -33,6 +33,14 @@ public class LoginController {
 		model.addAttribute("head", "WELCOME");
 		return "login.tiles";
 	}//
+		
+	@RequestMapping(value = "tab4.do", 
+			method = {RequestMethod.GET,RequestMethod.POST})
+			public String tab4(Model model) {
+				logger.info("Welcome LoginController tab4! "+ new Date());
+				model.addAttribute("head", "REGISTRY");
+				return "tab4.tiles";
+			}//
 
 	@RequestMapping(value = "regi.do", 
 	method = {RequestMethod.GET,RequestMethod.POST})

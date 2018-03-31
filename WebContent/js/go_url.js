@@ -19,3 +19,5 @@ function url_yutubelist() { /* url_yutubelist */ alert('url_yutubelist');self.lo
 function url_spfpcal() { /* 일지목록 */ alert('spfpcal');self.location.href = "spfpcal.do";  return false; }
 function url_spfpwrite() { /* 일지쓰기 */ alert('spfpwrite');self.location.href = "spfpwrite.do";  return false; }
 function url_spfpteam() { /* 팀 바꾸기 */ alert('spfpteam');self.location.href = "spfpteam.do";  return false; }
+
+function url_tab4() { /* 팀 바꾸기 */ alert('spfpteam');self.location.href = "tab4.do";  return false; }
