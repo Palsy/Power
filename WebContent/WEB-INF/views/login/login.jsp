@@ -18,7 +18,7 @@
     <div class="modal-content">
 	   	<div class="container">
 	 	<div class="row">
-	 	<h4>Modal Header</h4>
+	 	<h4>Login</h4>
 	
 	<form class="col s12" name="frmForm" id="_frmForm" action="loginAf.do" method="post">
 	  <div class="row">
@@ -39,7 +39,7 @@
 	  </div>
 	</form>
 	
-	<a href="regi.do" title="회원가입">아직 Booki의 회원이 아니신가요?</a>
+	<a href="regi.do" title="회원가입">아직 Booky의 회원이 아니신가요?</a>
 	
 	 </div>
 	 	<a id="_btnLogin" class="waves-effect waves-light btn modal-trigger" href="#none">로그인</a>
@@ -52,7 +52,7 @@
   <nav class="nav-extended">
   	<div class="container">
 	    <div class="nav-wrapper">
-	      <a href="#" class="brand-logo">Booki</a>
+	      <a href="#" class="brand-logo">Booky</a>
 	      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">로그인</a></li>

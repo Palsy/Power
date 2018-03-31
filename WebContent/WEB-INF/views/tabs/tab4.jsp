@@ -17,7 +17,7 @@
   <nav class="nav-extended">
   	<div class="container">
 	    <div class="nav-wrapper">
-	      <a href="#" class="brand-logo">Booki</a>
+	      <a href="#" class="brand-logo">Booky</a>
 	      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 	        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">로그인</a></li>
