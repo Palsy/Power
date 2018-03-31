@@ -49,7 +49,7 @@
 	<div id="login_wrap">	
 
 
-<form action="" method="post" id="_frmForm" name="frmForm">
+<form action="" method="post" id="_frmForm" name="frmForm" enctype="multipart/form-data">
 <table class="content_table" style="width:75%;">
 <colgroup>
 		<col style="width:30%;" />
@@ -80,6 +80,10 @@
 <th>패스워드</th>
 <td><input data-msg="패스워드" type="password" name="pwd"  id="_pwd" size="30" /></td>
 </tr>
+<th>파일업로드</th>
+<td ><input type="file" name="fileload" size="40"></td>
+</tr>
+
 <tr>
 <td colspan="2" style="height:50px; text-align:center;">
 <a href="#none" id="_btnRegi" title="회원가입"><img src="image/regi.jpg" alt="회원가입" /></a>

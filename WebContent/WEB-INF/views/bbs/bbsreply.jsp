@@ -38,7 +38,7 @@ name='content' id="_content">${bbs.content}</textarea></td>
 <tbody>	
 <tr class="id">
 <th>아이디</th><td style="text-align: left"><input type="text" name="id" readonly="readonly" 
-value='${login.id}' size="60"/></td>
+value='${login.id}' size="60"/><input type="hidden" name="idfilename" value='${login.filename}' /></td>
 </tr>
 <tr>
 <th>제목</th><td style="text-align: left"><input type="text" name="title" size="60"/></td>

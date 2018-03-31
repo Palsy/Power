@@ -1,34 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-		<title>JYL BBS</title>		
-		<!-- meta charset="UTF-8" / -->
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/initial.css"/>
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/table.css"/>
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/button.css"/>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/js/go_url.js"></script>
-        <script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery-ui.js"></script>
+		<title>Booki</title>		
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/materialize/css/materialize.css">
+		
+        
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.cookie.js"></script>
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery/jquery-ui.css"/>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/materialize/js/materialize.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/js/go_url.js"></script>
+		<!-- 
+			 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+		 -->
 
-<!--[if IE]>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("input[type='checkbox'], input[type='radio']").css({"border":"0", "padding":"0", "margin":"0"});
-			});
-		</script>
-<![endif]-->
+		 <script>
+		 var elem = document.querySelector('.sidenav');
+			var instance = M.Sidenav.init(elem, 'left');
 
-<!--[if lt IE 8]>
-	<style type="text/css">
-		#middle_wrap, #header_top_menu_wrap { zoom:1; display:inline; }
-	</style>
-<![endif]-->
+		  // Or with jQuery
 
-<!--[if IE 8]>
-	<style type="text/css">
-		#middle_wrap { display:table; }
-	</style>
-<![endif]-->
+		  $(document).ready(function(){
+		    $('.sidenav').sidenav();
+		  });
+		 </script>

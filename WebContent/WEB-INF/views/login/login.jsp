@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Booki</title>
+<title>Booky</title>
 		
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link rel="stylesheet" href="<%=request.getContextPath()%>/materialize/css/materialize.css">
@@ -14,9 +14,9 @@
 </head>
 <body style="background-color: lightgray;">
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
+  <div id="login_modal_1" class="modal">
     <div class="modal-content">
-	   	<div class="container">
+	   	<div class="container"> 
 	 	<div class="row">
 	 	<h4>Login</h4>
 	
@@ -47,7 +47,7 @@
     </div>
     </div>
   </div>
-  
+  <!-- Modal End -->
 
   <nav class="nav-extended">
   	<div class="container">
@@ -55,7 +55,7 @@
 	      <a href="#" class="brand-logo">Booky</a>
 	      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">로그인</a></li>
+	        <li><a class="waves-effect waves-light btn modal-trigger" href="#login_modal_1">로그인</a></li>
 	      </ul>
 	    </div>
     
@@ -77,21 +77,16 @@
 			  	<img src="image/bg.jpg">
 			  </div>
 			  
-			  <a href="#user"><img class="circle" src="image/parkho.jpg"></a>
-			  <a href="#name"><span class="white-text name">SungHo Park</span></a>
-			  <a href="#email"><span class="white-text email">namespace92@gmail.com</span></a>
+			  <a href="#user"><img class="circle" src="image/blank-person.jpg"></a>
+			  <a href="#name"><span class="white-text name">로그인이 필요합니다.</span></a>
+			  <a href="#email"><span class="white-text email">로그인을 해주세요.</span></a>
 		  </div>
 	  </li>
-	  <li><a class="waves-effect waves-light btn modal-trigger" href="#modal1">로그인</a></li>
-	  <li><a href="#"><i class="material-icons">cloud</i>My Wallets</a></li>
-	  <li><a href="#">Second Link</a></li>
-	  <li><div class="divider"></div></li>
-	  <li><a class="subheader">Subheader</a></li>
-	  <li><a class="waves-effect" href="#">Third Link With Waves</a></li>
+	  <li><a class="waves-effect waves-light btn modal-trigger" href="#login_modal_1">로그인</a></li>
   </ul>
 
 	<div class="container">
-		  <div class="card">
+		<div class="card">
 		  <div class="card-content">
 		    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
 		    <p><a href="#">This is a link</a></p>

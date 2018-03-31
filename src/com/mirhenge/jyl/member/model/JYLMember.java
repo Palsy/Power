@@ -9,6 +9,7 @@ public class JYLMember implements Serializable{
 	private String name;
 	private String email;
 	private String pwd;
+	private String filename;
 	private int delflag;
 	//20160106 수정
 	private int auth=3;
@@ -20,25 +21,27 @@ public class JYLMember implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public JYLMember(String id, String name, String email, String pwd,
+	public JYLMember(String id, String name, String email, String pwd,String filename,
 			int delflag, int auth) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.pwd = pwd;
+		this.setFilename(filename);
 		this.delflag = delflag;
 		this.auth = auth;
 	}
-	public JYLMember(String id, String name, String email, String pwd) {
+	public JYLMember(String id, String name, String email, String pwd,String filename) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.pwd = pwd;
+		this.setFilename(filename);
 	}
 	//추가
-	public JYLMember(String id, String name, String email, String pwd, int delflag, int auth, int team) {
+	public JYLMember(String id, String name, String email, String pwd,String filename, int delflag, int auth, int team) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -47,6 +50,7 @@ public class JYLMember implements Serializable{
 		this.delflag = delflag;
 		this.auth = auth;
 		this.team = team;
+		this.setFilename(filename);
 	}
 	public int getTeam() {
 		return team;
@@ -98,6 +102,12 @@ public class JYLMember implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	
 	

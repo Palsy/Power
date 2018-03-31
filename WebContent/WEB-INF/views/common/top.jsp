@@ -4,17 +4,49 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:useBean id="nows" class="java.util.Date" />
-<div style="width:100%; height:53px; border-bottom:1px solid #5e5e5e;">
-	<div style="width:100%; height:100%; clear:both; display:inline-block;">
-		<div id="_title_image" style="width:30%; float:left; display:inline;"><img src="image/bbslogo.png" style="height:53px;" alt="logo" /></div>
-		<div id="_title_today" style="width:70%; float:left; text-align:right;"><div style="position:relative; top:27px;">
-		<c:if test="${login.id ne ''}">
-		<a href="#none" onclick="url_logout();" title="로그아웃">[로그아웃]</a>&nbsp; &nbsp; &nbsp;
-		</c:if>
-		<c:if test="${login.name ne ''}">
-		  [${login.name}]
-		</c:if>
-		 <fmt:formatDate var="now" value="${nows}" pattern="yyyy/MM/dd" />${now} 
-		</div></div>
-	</div>
-</div>
+
+<nav class="nav-extended">
+  	<div class="container">
+	    <div class="nav-wrapper">
+	      <a href="#" class="brand-logo">Booky</a>
+	      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+	      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		    <c:if test="${login.id ne ''}">
+				<li><a class="waves-effect waves-light btn modal-trigger" href="#" onclick="url_logout();">로그아웃</a></li>
+			</c:if>
+	      </ul>
+	    </div>
+    	
+    	<div class="nav-content">
+			<ul class="tabs tabs-transparent">
+		        <li class="tab"><a href="#none" onclick="url_bbslist();" title="답변형게시판">답변형게시판</a></li>							
+				<li class="tab"><a href="#none" onclick="url_pdslist();" title=자료실>자료실</a></li>	
+				<li class="tab"><a href="#none" onclick="url_calendar();" title="일정관리">일정관리</a></li>
+				<li class="tab"><a href="#none" onclick="url_polllist();" title="투표하기">투표하기</a></li>	
+			</ul>
+		</div>
+ 
+    </div>
+  </nav>
+  
+  <ul id="slide-out" class="sidenav">
+	  <li>
+		  <div class="user-view">
+			  <div class="background">
+			  	<img src="image/bg.jpg">
+			  </div>
+			  
+			  <a href="#user"><img class="circle" src="./upload/${login.filename}"></a>
+			<c:if test="${login.name ne ''}">
+				<a href="#name"><span class="white-text name">${login.name}</span></a>
+			</c:if>
+			  
+			  <a href="#email"><span class="white-text email">${login.email}</span></a>
+		  </div>
+	  </li>
+	  <li><a class="waves-effect" href="#"><i class="material-icons">cloud</i>My Page</a></li>
+	  <li><a href="#">Second Link</a></li>
+	  <li><div class="divider"></div></li>
+	  <li><a class="subheader">Subheader</a></li>
+	  <li><a class="waves-effect" href="#">Third Link With Waves</a></li>
+  </ul>

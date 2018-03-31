@@ -69,6 +69,7 @@ public class BbsController {
 			method = RequestMethod.POST)
 	public String bbswriteAf(JYLMBoard bbs,Model model) throws Exception {
 		logger.info("Welcome BBSController bbswriteAf! "+ new Date());
+		logger.info("Welcome BBSController bbswriteAf! "+ bbs.toString());
 		jYLMBoardService.writeBbs(bbs);
 		return "redirect:/bbslist.do";
 	}//
@@ -79,6 +80,8 @@ public class BbsController {
 		model.addAttribute("doc_title", "BBS 상세보기");
 		model.addAttribute("bbs", 
 				jYLMBoardService.getBbs(mboard));
+		model.addAttribute("bbslist", 
+				jYLMBoardService.getBbsList());
 		return "bbsdetail.tiles";
 	}//
 	@RequestMapping(value = "bbsreply.do", 

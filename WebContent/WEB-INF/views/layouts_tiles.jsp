@@ -9,36 +9,27 @@
 <html lang="ko">
 	<head>
 		<tiles:insertAttribute name="header"/>
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css"/>
-		<style type="text/css">
-		</style>	
 	</head>
 	<body>
 		<div id="body_wrap">
 			<div id="main_wrap">
 				<div id="header_wrap">
 					<tiles:insertAttribute name="top_inc"/>
-					<tiles:insertAttribute name="top_menu"/>
-				</div>						
+				</div>
 				
 				<div id="middle_wrap">
-					<div id="sidebar_wrap">
-					<tiles:insertAttribute name="left_main"/>	
-					</div>
 					
-					<div id="content_wrap">		
-						<div id="content_title_wrap">
-							<div class="title">${doc_title}</div>
-						</div>
+					<div id="content_wrap">
 			                 <tiles:insertAttribute name="main"/>	
 					</div> <!--  //content_wrap -->		
 				</div><!--  //middle_wrap -->
 				
+				<!-- 
 				<div id="footer_wrap">
 					<tiles:insertAttribute name="bottom_inc"/>
-				</div><!--  //footer_wrap -->
-						
-			</div>	<!--  //main_wrap -->	
+				</div>
+				 -->
+			</div>	<!--  //main_wrap -->
 		</div><!--  //body_wrap -->		
 		
 		<script type="text/javascript">

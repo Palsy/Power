@@ -4,6 +4,7 @@
 <fmt:requestEncoding value="utf-8"/>
 <form name="frmForm" id="_frmForm" method="post" action="">
 <table class="list_table" style="width:85%;">
+
 <colgroup>
 <col style="width:200px;" />
 <col style="width:auto;" />
@@ -14,7 +15,7 @@
 value='${login.id}' size="60"/></td>
 </tr>
 <tr>
-<th>제목</th><td style="text-align: left"><input type="text" name="title" size="60"/></td>
+<th>제목</th><td style="text-align: left"><input type="text" name="title" size="60"/><input type="hidden" name="idfilename" value='${login.filename}'/></td>
 </tr>
 <tr>
 <th>내용</th>

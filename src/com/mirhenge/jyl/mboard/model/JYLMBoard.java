@@ -7,6 +7,7 @@ public class JYLMBoard implements Serializable {
 
 	private int seq;
 	private String id;
+	private String idfilename;
 	private String title;
 	private String content;
 	private Date wdate;
@@ -19,11 +20,12 @@ public class JYLMBoard implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public JYLMBoard(int seq, String id, String title, String content,
+	public JYLMBoard(int seq, String id,String idfilename, String title, String content,
 			Date wdate, int ref, int step, int depth, int parent, int delflag) {
 		super();
 		this.seq = seq;
 		this.id = id;
+		this.idfilename = idfilename;
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
@@ -33,24 +35,26 @@ public class JYLMBoard implements Serializable {
 		this.parent = parent;
 		this.delflag = delflag;
 	}
-	public JYLMBoard(String id, String title, String content) {
+	public JYLMBoard(String id, String idfilename,String title, String content) {
 		super();
 		this.id = id;
+		this.idfilename = idfilename;
 		this.title = title;
 		this.content = content;
 	}
 	
-	public JYLMBoard(int seq, String id, String title, String content, Date wdate) {
+	public JYLMBoard(int seq, String id, String idfilename,String title, String content, Date wdate) {
 		super();
 		this.seq = seq;
 		this.id = id;
+		this.idfilename = idfilename;
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
 	}
 	@Override
 	public String toString() {
-		return "KHMBoard [seq=" + seq + ", id=" + id + ", title=" + title
+		return "KHMBoard [seq=" + seq + ", id=" + id + ", idfilename=" + idfilename + ", title=" + title
 				+ ", content=" + content + ", wdate=" + wdate + ", ref=" + ref
 				+ ", step=" + step + ", depth=" + depth + ", parent=" + parent
 				+ ", delflag=" + delflag + "]";
@@ -114,6 +118,12 @@ public class JYLMBoard implements Serializable {
 	}
 	public void setDelflag(int delflag) {
 		this.delflag = delflag;
+	}
+	public String getIdfilename() {
+		return idfilename;
+	}
+	public void setIdfilename(String idfilename) {
+		this.idfilename = idfilename;
 	}
 
 }

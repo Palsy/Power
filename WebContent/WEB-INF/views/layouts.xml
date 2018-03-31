@@ -7,8 +7,9 @@
 	<put-attribute name="common" value="/WEB-INF/views/common/common.jsp" />
 	<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
 	<put-attribute name="top_inc" value="/WEB-INF/views/common/top.jsp" />
-	<put-attribute name="top_menu" value="/WEB-INF/views/common/top_menu.jsp" />
+	<!--
 	<put-attribute name="left_main" value="/WEB-INF/views/common/left_bbslist.jsp" />
+	-->
 	<put-attribute name="main" value="/WEB-INF/views/bbs/bbslist.jsp" />
 	<put-attribute name="bottom_inc" value="/WEB-INF/views/common/bottom.jsp" />
 </definition>

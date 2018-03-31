@@ -6,15 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="writeBbs"  
 	parameterType="com.mirhenge.jyl.mboard.model.JYLMBoard">
-		INSERT INTO JYL_MBOARD(SEQ ,ID ,TITLE,CONTENT,
+		INSERT INTO JYL_MBOARD(SEQ ,ID ,IDFILENAME,TITLE,CONTENT,
 		WDATE,REF,STEP,DEPTH,PARENT,DELFLAG) 
-		VALUES(SEQ_JYL_MBOARD.NEXTVAL,#{id},#{title},#{content},
+		VALUES(SEQ_JYL_MBOARD.NEXTVAL,#{id},#{idfilename},#{title},#{content},
 		SYSDATE,(SELECT NVL(MAX(REF),0)+1 FROM JYL_MBOARD)
 		,0,0,0,0)
 	</insert>
 	<select id="getBbsList"
 	resultType="com.mirhenge.jyl.mboard.model.JYLMBoard">
-		SELECT SEQ ,ID ,TITLE,CONTENT,
+		SELECT SEQ ,ID,IDFILENAME ,TITLE,CONTENT,
 		WDATE,REF,STEP,DEPTH,PARENT,DELFLAG
 		FROM JYL_MBOARD
 		ORDER BY REF ASC, STEP ASC
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getBbs"
 	parameterType="com.mirhenge.jyl.mboard.model.JYLMBoard"
 	resultType="com.mirhenge.jyl.mboard.model.JYLMBoard">
-		SELECT SEQ ,ID ,TITLE,CONTENT,
+		SELECT SEQ ,ID,IDFILENAME ,TITLE,CONTENT,
 		WDATE,REF,STEP,DEPTH,PARENT,DELFLAG
 		FROM JYL_MBOARD
 		WHERE SEQ=#{seq}
@@ -37,11 +37,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="replyBbsInsert"  
 	parameterType="com.mirhenge.jyl.mboard.model.JYLMBoard">
 		INSERT INTO JYL_MBOARD
-		(SEQ ,ID ,TITLE,CONTENT,
+		(SEQ ,ID ,IDFILENAME,TITLE,CONTENT,
 		WDATE,REF,STEP,DEPTH,PARENT,DELFLAG)
 		VALUES(
 		SEQ_JYL_MBOARD.NEXTVAL,
-		#{id},#{title},#{content},SYSDATE,
+		#{id},#{idfilename},#{title},#{content},SYSDATE,
 		(SELECT REF FROM JYL_MBOARD WHERE SEQ=#{seq}),
 		(SELECT STEP FROM JYL_MBOARD WHERE SEQ=#{seq})+1,
 		(SELECT DEPTH FROM JYL_MBOARD WHERE SEQ=#{seq})+1,
@@ -63,12 +63,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getBbsPageList"
 	parameterType="com.mirhenge.jyl.mboard.help.BbsParam"
 	resultType="com.mirhenge.jyl.mboard.model.JYLMBoard">
-	SELECT SEQ ,ID ,TITLE,CONTENT,
+	SELECT SEQ ,ID,IDFILENAME ,TITLE,CONTENT,
 		WDATE,REF,STEP,DEPTH,PARENT,DELFLAG
 	FROM 
 		( SELECT ROW_NUMBER() OVER (
 		ORDER BY  REF ASC, STEP ASC) as rnum,  
-		SEQ ,ID ,TITLE,CONTENT,
+		SEQ ,ID,IDFILENAME,TITLE,CONTENT,
 		WDATE,REF,STEP,DEPTH,PARENT,DELFLAG 
 	FROM JYL_MBOARD
 	    WHERE 1 = 1 

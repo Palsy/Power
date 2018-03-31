@@ -12,8 +12,8 @@
 <!--     <script type="text/javascript" src="./colorpicker/js/layout.js?ver=1.0.2"></script> -->
 <!-- </head> -->
 
-<div class="box_border" style="margin-top:5px; margin-bottom: 10px;">
 <form name="frmForm1" id="_frmFormSearch" method="post" action="">
+<!-- 
 <table style="margin-left:auto; margin-right:auto; margin-top:3px; margin-bottom:3px; border:0; padding:0;">
 <tr>
 	<td>검색 : </td>
@@ -28,51 +28,42 @@
 <td style="padding-left:5px;"><span class="button blue"><button type="button" id="_btnSearch"> 검색 </button></span></td>
 		</tr>
 	</table>
-	<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}"/>						
+ -->
+	<input type="hidden" name="pageNumber" id="_pageNumber" value="${(empty pageNumber)?0:pageNumber}"/>
 	<input type="hidden" name="recordCountPerPage" id="_recordCountPerPage" value="${(empty recordCountPerPage)?10:recordCountPerPage}"/>						
 	</form>
-</div>
-<hr/>
-<a href='downloadPDF.do'>pdf</a>
-<a href='downloadExcel.do'>excel</a>
-<hr/>
 
-<jsp:useBean id="ubbs" class="com.mirhenge.jyl.mboard.help.BbsBean"/>
-<table class="list_table" style="width:85%;">
-<colgroup>
-<col style="width:70px;" />
-<col style="width:auto;" />
-<col style="width:100px;" />
-</colgroup>
-<thead>
-<tr>
-<th>순서</th> <th>제목</th> <th>작성자</th> 
-</tr>
-</thead>
-<tbody>	
-<c:if test="${empty bbslist}">
-<tr>
-	<td colspan="3">작성된 글이 없습니다.</td>
-</tr>
-</c:if>
-<c:forEach items="${bbslist}" var="bbs" varStatus="vs">
-<jsp:setProperty property="depth" name="ubbs" 
-value="${bbs.depth}"/>
-	<tr class="_hover_tr">
-	<td>${vs.count}</td> 
-	<td style="text-align: left"><jsp:getProperty property="reply" 
-name="ubbs"/><a href='bbsdetail.do?seq=${bbs.seq}'>
-${bbs.title}</a></td>
-	<td>${bbs.id}</td> 
-	</tr>
-</c:forEach>
-</tbody>
-</table>
-<div id="buttons_wrap">
-	<span class="button blue">
-	<button type="button" id="_btnAdd">글쓰기</button></span>
+
+<div class="container">
+		<c:if test="${empty bbslist}">
+			<tr>
+				<td colspan="3">작성된 글이 없습니다.</td>
+			</tr>
+		</c:if>
+		<c:forEach items="${bbslist}" var="bbs" varStatus="vs">
+			<c:if test="${bbs.step eq 0}">
+				<div class="card">
+				  <div class="card-content">
+				  	<c:if test="${empty bbs.idfilename}"> 
+				  		<img width="30px" height="30px" src="./image/blank-person.jpg"/>
+				  	</c:if>
+				  	<c:if test="${not empty bbs.idfilename}"> 
+				  		<img width="30px" height="30px" src="./upload/${bbs.idfilename}"/>
+				    </c:if>
+				    <a href='bbsdetail.do?seq=${bbs.seq}' class="card-title activator grey-text text-darken-4">${bbs.title}<i class="material-icons right">more_vert</i></a>
+				    <p><a href="#">${bbs.content}</a></p>
+				  </div>
+				</div>
+			</c:if>
+		</c:forEach>	  
 </div>
-<!-- <a href='bbswrite.do'>글쓰기</a> -->
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red" href="bbswrite.do">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+</div>
+
 
 <div id="paging_wrap">
 <jsp:include page="/WEB-INF/views/common/paging.jsp" flush="false">
@@ -111,4 +102,11 @@ function goPage(pageNumber) {
 	$("#_pageNumber").val(pageNumber) ;
 	$("#_frmFormSearch").attr("target","_self").attr("action","bbslist.do").submit();
 }
+
+var elem = document.querySelector('.fixed-action-btn');
+var instance = M.FloatingActionButton.init(elem, {
+  direction: 'left',
+  hoverEnabled: false
+});
+
 </script>

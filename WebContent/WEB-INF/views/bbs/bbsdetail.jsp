@@ -21,17 +21,29 @@
 <th>작성일</th><td style="text-align: left">${bbs.wdate}</td>
 </tr>
 <tr>
-<th>내용</th>
+<th>내용-----</th>
 <td style="text-align: left"><textarea rows="10" cols="50" 
 name='content' id="_content">${bbs.content}</textarea></td>
 </tr>
+
+<c:forEach items="${bbslist}" var="candidate" varStatus="vs">
+
+ 	<c:if test="${candidate.parent eq bbs.seq}">
+ 		<tr><td><a>${candidate.content}</a><br></td></tr>
+ 	</c:if>
+ 
+</c:forEach>
 <tr>
 <td colspan="2" style="height:50px; text-align:center;">
-<span>
+<span>		
+
 <c:if test="${bbs.id eq login.id}">
     <a href="#none" id="_btnUpdate" title="글수정하기"><img src="image/bupdate.png" alt="수정하기" /></a>
 	</c:if>
 	<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
+	
+	
+	
 </span>
 </td>
 </tr>
