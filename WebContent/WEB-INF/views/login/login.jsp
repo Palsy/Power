@@ -12,9 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		
 </head>
-<body>
-
-	
+<body style="background-color: lightgray;">
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
@@ -27,6 +25,10 @@
 	      <input id="_userid" name="id" type="text" class="validate">
 	      <label for="아이디">아이디</label>
 	    </div>
+	    	<label>
+	       	 <input type="checkbox"  id="_chk_save_id"/>
+	        	<span>ID 저장</span>
+	      	</label>
 	  </div>
 	  <div class="row">
 	    <div class="input-field col s12">
@@ -35,8 +37,11 @@
 	    </div>
 	  </div>
 	</form>
+	
+	<a href="#none" id="_btnRegi" title="회원가입">아직 Booki의 회원이 아니신가요?</a>
+	
 	 </div>
-	 	<a id="_btnLogin" class="waves-effect waves-light btn modal-trigger text-right" href="#">로그인</a>
+	 	<a id="_btnLogin" class="waves-effect waves-light btn modal-trigger" href="#">로그인</a>
     </div>
     </div>
   </div>
@@ -84,33 +89,27 @@
   </ul>
 
 	<div class="container">
-		  <div class="divider"></div>
-		  <div class="section">
-		    <h5>질문 1</h5>
-		    <p>Stuff</p>
+		  <div class="card">
+		  <div class="card-content">
+		    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+		    <p><a href="#">This is a link</a></p>
 		  </div>
-		  <div class="divider"></div>
-		  <div class="section">
-		    <h5>질문 1</h5>
-		    <p>Stuff</p>
+		</div>
+		
+		<div class="card">
+		  <div class="card-content">
+		    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+		    <p><a href="#">This is a link</a></p>
 		  </div>
-		  <div class="divider"></div>
-		  <div class="section">
-		    <h5>질문 1</h5>
-		    <p>Stuff</p>
+		</div>  
+		
+		<div class="card">
+		  <div class="card-content">
+		    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+		    <p><a href="#">This is a link</a></p>
 		  </div>
-		  <div class="divider"></div>
-		  <div class="section">
-		    <h5>질문 1</h5>
-		    <p>Stuff</p>
-		  </div>
-		  <div class="divider"></div>
-		  <div class="section">
-		    <h5>질문 1</h5>
-		    <p>Stuff</p>
-		  </div>
-		  
-  </div>
+		</div>  
+  	</div>
   <div class="fixed-action-btn">
   <a class="btn-floating btn-large red">
     <i class="large material-icons">mode_edit</i>
@@ -148,7 +147,7 @@
 					event.preventDefault();
 					$("#_pwd").focus();
 				}
-			});			
+			});
 
 			$("#_pwd").keypress(function(event) {
 				if (event.which == '13') {
@@ -168,7 +167,6 @@
 			$("#_chk_save_id").click(function () {
 
 			    if ($(this).prop("checked")) {
-			    	//alert('cookie');
 			        if ($("#_userid").val() == "") {
 			            $(this).prop("checked", false);
 			            alert("아이디를 입력해 주십시요.");
