@@ -2,110 +2,83 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8"/>
-<form name="frmForm" id="_frmForm" method="post" action="">
-<table class="list_table" style="width:85%;">
+
+
+<!-- 
+<input type="hidden" name="seq"   value="${bbs.seq}"/>
+<c:if test="${bbs.id eq login.id}">
+<a href="#none" id="_btnUpdate" title="글수정하기"><img src="image/bupdate.png" alt="수정하기" /></a>
+</c:if>
+<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
+-->
+
 <div class="container">
-	<ul class="collection">
-    <li class="collection-item avatar">
+	<h2>Title : ${bbs.title}</h2>
+	<blockquote>
 		<c:if test="${empty bbs.idfilename}"> 
-			<img class="circle" src="./image/blank-person.jpg"/>
+			<img style="width:30px; height:30px;" class="circle" src="./image/blank-person.jpg"/>
 		</c:if>
 		<c:if test="${not empty bbs.idfilename}"> 
-			<img class="circle" src="./upload/${bbs.idfilename}"/>
+			<img style="width:30px; height:30px;" class="circle" src="./upload/${bbs.idfilename}"/>
 		</c:if>
-      <span class="title">하루에 몇번씩 자위를 해야 건강한가요?</span>
-      <p>First LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst Line <br>
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle">folder</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle green">insert_chart</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle red">play_arrow</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-    </li>
-  </ul>
+    </blockquote>
+    <div class="divder"></div>
+    <div class="divder"></div>
+    <div class="divder"></div>
+    <div class="divder"></div>
+	
+	
+	 <div class="row">
+	  <form class="col s12">
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <i class="material-icons prefix">mode_edit</i>
+	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.id}</textarea>
+	        <label for="icon_prefix2">First Name</label>
+	      </div>
+	      <div class="input-field col s12">
+	        <i class="material-icons prefix">mode_edit</i>
+	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.title}</textarea>
+	        <label for="icon_prefix2">First Name</label>
+	      </div>
+	      <div class="input-field col s12">
+	        <i class="material-icons prefix">mode_edit</i>
+	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.content}</textarea>
+	        <label for="icon_prefix2">First Name</label>
+	      </div>
+	      <div class="input-field col s12">
+	        <i class="material-icons prefix">mode_edit</i>
+	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.wdate}</textarea>
+	        <label for="icon_prefix2">First Name</label>
+	      </div>
+	    </div>
+	  </form>
+	</div>
+	
+	<ul class="collection">
+	<c:forEach items="${bbslist}" var="candidate" varStatus="vs">
+	<c:if test="${candidate.parent eq bbs.seq}">
+		    <li class="collection-item avatar">
+				<c:if test="${empty bbs.idfilename}"> 
+					<img class="circle" src="./image/blank-person.jpg"/>
+				</c:if>
+				<c:if test="${not empty bbs.idfilename}"> 
+					<img class="circle" src="./upload/${bbs.idfilename}"/>
+				</c:if>
+				<p>ID : ${candidate.id} </p>
+		      <span class="title"><b>${candidate.title}</b></span>
+		      
+		      <p>Contents : ${candidate.content} </p>
+		      <p>date : ${candidate.wdate} </p>
+		      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+		    </li>
+ 	</c:if>
+	</c:forEach>
+	</ul>
+	
 </div>
 
 
-
-<input type="hidden" name="seq"   value="${bbs.seq}"/>
-<tbody>	
-<tr class="id">
-<th>아이디</th>
-<td style="text-align: left">${bbs.id}</td>
-<td style="text-align: left">${bbs.title}</td>
-<th>작성일</th><td style="text-align: left">${bbs.wdate}</td>
-<td style="text-align: left">${bbs.content}</td>
-<td style="text-align: left">
-	
-</td>
-</tr>
-<tr>
-
-<c:forEach items="${bbslist}" var="candidate" varStatus="vs">
- 	<c:if test="${candidate.parent eq bbs.seq}">
- 		<tr><td><a>${candidate.id}</a><br></td></tr>
- 		<tr><td><a>${candidate.title}</a><br></td></tr>
- 		<tr><td><a>${candidate.content}</a><br></td></tr>
- 		<tr><td><a>				  	
- 					<c:if test="${empty candidate.idfilename}"> 
-				  		<img width="30px" height="30px" src="./image/blank-person.jpg"/>
-				  	</c:if>
-				  	<c:if test="${not empty candidate.idfilename}"> 
-				  		<img width="30px" height="30px" src="./upload/${candidate.idfilename}"/>
-				    </c:if>
-		</a></td></tr>
- 	</c:if>
- 
-</c:forEach>
-<tr>
-<td colspan="2" style="height:50px; text-align:center;">
-<span>		
-
-<c:if test="${bbs.id eq login.id}">
-    <a href="#none" id="_btnUpdate" title="글수정하기"><img src="image/bupdate.png" alt="수정하기" /></a>
-	</c:if>
-	<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
-	
-	
-	
-</span>
-</td>
-</tr>
-</tbody>
-</table>
-</form>
 <script type="text/javascript">
 $("#_btnUpdate").click(function() {	
 	alert('글수정하기');	

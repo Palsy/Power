@@ -25,7 +25,6 @@
 				<li class="tab"><a href="#none" onclick="url_polllist();" title="투표하기">투표하기</a></li>	
 			</ul>
 		</div>
- 
     </div>
   </nav>
   
@@ -36,7 +35,14 @@
 			  	<img src="image/bg.jpg">
 			  </div>
 			  
-			  <a href="#user"><img class="circle" src="./upload/${login.filename}"></a>
+			<c:if test="${empty login.filename}">
+				<a href="#user"><img class="circle" src="./image/blank-person.jpg"></a>
+			</c:if>
+			
+			<c:if test="${not empty login.filename}"> 
+				<a href="#user"><img class="circle" src="./upload/${login.filename}"></a>
+			</c:if>
+			  
 			<c:if test="${login.name ne ''}">
 				<a href="#name"><span class="white-text name">${login.name}</span></a>
 			</c:if>
