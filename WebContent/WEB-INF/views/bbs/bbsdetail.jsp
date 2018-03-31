@@ -4,32 +4,88 @@
 <fmt:requestEncoding value="utf-8"/>
 <form name="frmForm" id="_frmForm" method="post" action="">
 <table class="list_table" style="width:85%;">
+<div class="container">
+	<ul class="collection">
+    <li class="collection-item avatar">
+		<c:if test="${empty bbs.idfilename}"> 
+			<img class="circle" src="./image/blank-person.jpg"/>
+		</c:if>
+		<c:if test="${not empty bbs.idfilename}"> 
+			<img class="circle" src="./upload/${bbs.idfilename}"/>
+		</c:if>
+      <span class="title">하루에 몇번씩 자위를 해야 건강한가요?</span>
+      <p>First LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst LineFirst Line <br>
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+         Second LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond LineSecond Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle red">play_arrow</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
+</div>
+
+
+
 <input type="hidden" name="seq"   value="${bbs.seq}"/>
-<colgroup>
-<col style="width:200px;" />
-<col style="width:auto;" />
-</colgroup>
 <tbody>	
 <tr class="id">
 <th>아이디</th>
 <td style="text-align: left">${bbs.id}</td>
-</tr>
-<tr>
-<th>제목</th><td style="text-align: left">${bbs.title}</td>
-</tr>
-<tr>
+<td style="text-align: left">${bbs.title}</td>
 <th>작성일</th><td style="text-align: left">${bbs.wdate}</td>
+<td style="text-align: left">${bbs.content}</td>
+<td style="text-align: left">
+	
+</td>
 </tr>
 <tr>
-<th>내용-----</th>
-<td style="text-align: left"><textarea rows="10" cols="50" 
-name='content' id="_content">${bbs.content}</textarea></td>
-</tr>
 
 <c:forEach items="${bbslist}" var="candidate" varStatus="vs">
-
  	<c:if test="${candidate.parent eq bbs.seq}">
+ 		<tr><td><a>${candidate.id}</a><br></td></tr>
+ 		<tr><td><a>${candidate.title}</a><br></td></tr>
  		<tr><td><a>${candidate.content}</a><br></td></tr>
+ 		<tr><td><a>				  	
+ 					<c:if test="${empty candidate.idfilename}"> 
+				  		<img width="30px" height="30px" src="./image/blank-person.jpg"/>
+				  	</c:if>
+				  	<c:if test="${not empty candidate.idfilename}"> 
+				  		<img width="30px" height="30px" src="./upload/${candidate.idfilename}"/>
+				    </c:if>
+		</a></td></tr>
  	</c:if>
  
 </c:forEach>
