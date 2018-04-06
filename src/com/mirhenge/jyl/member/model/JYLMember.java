@@ -13,6 +13,7 @@ public class JYLMember implements Serializable{
 	private int delflag;
 	//20160106 수정
 	private int auth=3;
+	private int coin;
 	
 	// 20174 수정
 	private int team;
@@ -22,7 +23,7 @@ public class JYLMember implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	public JYLMember(String id, String name, String email, String pwd,String filename,
-			int delflag, int auth) {
+			int delflag, int auth, int coin) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -31,17 +32,19 @@ public class JYLMember implements Serializable{
 		this.setFilename(filename);
 		this.delflag = delflag;
 		this.auth = auth;
+		this.coin = coin;
 	}
-	public JYLMember(String id, String name, String email, String pwd,String filename) {
+	public JYLMember(String id, String name, String email, String pwd,String filename,int coin) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.pwd = pwd;
 		this.setFilename(filename);
+		this.coin = coin;
 	}
 	//추가
-	public JYLMember(String id, String name, String email, String pwd,String filename, int delflag, int auth, int team) {
+	public JYLMember(String id, String name, String email, String pwd,String filename, int delflag, int auth, int team,int coin) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,6 +53,7 @@ public class JYLMember implements Serializable{
 		this.delflag = delflag;
 		this.auth = auth;
 		this.team = team;
+		this.coin = coin;
 		this.setFilename(filename);
 	}
 	public int getTeam() {
@@ -62,7 +66,7 @@ public class JYLMember implements Serializable{
 	@Override
 	public String toString() {
 		return "JYLMember [id=" + id + ", name=" + name + ", email=" + email + ", pwd=" + pwd + ", delflag=" + delflag
-				+ ", auth=" + auth + ", team=" + team + "]";
+				+ ", auth=" + auth + ", coin=" + coin +", team=" + team + "]";
 	}
 	public String getId() {
 		return id;
@@ -108,6 +112,12 @@ public class JYLMember implements Serializable{
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+	public int getCoin() {
+		return coin;
+	}
+	public void setCoin(int coin) {
+		this.coin = coin;
 	}
 	
 	

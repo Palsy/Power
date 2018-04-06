@@ -16,4 +16,6 @@ public interface JYLMBoardDao {
 	public List<JYLMBoard> getBbsPageList(BbsParam param) throws Exception;
 	public int getBbsTotalCount(BbsParam param)throws Exception;
 	String preView(int seq);
+	void voteBbs(JYLMBoard bbs);
+
 }

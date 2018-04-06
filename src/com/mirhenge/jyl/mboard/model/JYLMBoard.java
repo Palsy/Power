@@ -11,6 +11,7 @@ public class JYLMBoard implements Serializable {
 	private String title;
 	private String content;
 	private Date wdate;
+	private int vote;
 	private int ref;
 	private int step;
 	private int depth;
@@ -21,7 +22,7 @@ public class JYLMBoard implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	public JYLMBoard(int seq, String id,String idfilename, String title, String content,
-			Date wdate, int ref, int step, int depth, int parent, int delflag) {
+			Date wdate, int vote,int ref, int step, int depth, int parent, int delflag) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -29,6 +30,7 @@ public class JYLMBoard implements Serializable {
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
+		this.vote = vote;
 		this.ref = ref;
 		this.step = step;
 		this.depth = depth;
@@ -124,6 +126,12 @@ public class JYLMBoard implements Serializable {
 	}
 	public void setIdfilename(String idfilename) {
 		this.idfilename = idfilename;
+	}
+	public int getVote() {
+		return vote;
+	}
+	public void setVote(int vote) {
+		this.vote = vote;
 	}
 
 }

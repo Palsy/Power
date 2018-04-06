@@ -14,16 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mirhenge.jyl.mboard.dao.JYLMBoardService;
 import com.mirhenge.jyl.mboard.help.BbsParam;
 import com.mirhenge.jyl.mboard.model.JYLMBoard;
+import com.mirhenge.jyl.member.dao.JYLMemberService;
+import com.mirhenge.jyl.member.model.JYLMember;
 
 @Controller
 public class BbsController {
 	
 	private static final Logger logger = 
 			LoggerFactory.getLogger(BbsController.class);
-	
+	private int sumOfVote=0;
 	@Autowired
 	private JYLMBoardService jYLMBoardService;
 	
+	@Autowired
+	private JYLMemberService jylMemberService;
 	
 	@RequestMapping(value = "bbslist.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
@@ -56,7 +60,68 @@ public class BbsController {
 		
 		return "bbslist.tiles";
 	}//
+	@RequestMapping(value = "voting.do", 
+			method = {RequestMethod.GET,RequestMethod.POST})
+	public String voting(JYLMBoard mboard,String update_id, Model model) {
+		logger.info("Welcome voting! "+ new Date());
+		logger.info("Welcome voting! "+ update_id);
+		JYLMBoard update_board = new JYLMBoard();
+		update_board.setSeq(Integer.parseInt(update_id));
+		logger.info("Welcome voting! "+ update_board.toString());
+		
+		jYLMBoardService.voteBbs(update_board);
+		
+		model.addAttribute("doc_title", "BBS 상세보기");
+		model.addAttribute("bbs", 
+				jYLMBoardService.getBbs(mboard));
+		model.addAttribute("bbslist", 
+				jYLMBoardService.getBbsList());
+		return "bbsdetail.tiles";
+	}//
 	
+	@RequestMapping(value = "votingEnd.do", 
+			method = {RequestMethod.GET,RequestMethod.POST})
+	public String votingEnd(JYLMBoard mboard,Model model) {
+		logger.info("Welcome voting End! "+ new Date());
+		
+		int id = mboard.getSeq();
+		sumOfVote = 0;
+		jYLMBoardService.getBbsList().forEach((item)->{
+			int sum=0;
+			if(id == item.getParent())
+			{
+				sumOfVote += item.getVote();
+			}
+		});
+		logger.info("Welcome voting End! "+ sumOfVote);
+
+		jYLMBoardService.getBbsList().forEach((item)->{
+			
+			if(id == item.getParent())
+			{
+				logger.info("Welcome voting End! "+ item.getVote());
+				logger.info("Welcome voting End! "+ sumOfVote);
+				
+				float coin=((float)item.getVote()/(float)sumOfVote)*100;
+				
+				logger.info("Welcome voting End! coin "+ coin);
+
+				JYLMember member = new JYLMember();
+				member.setId(item.getId());
+				member.setCoin((int)coin);
+				jylMemberService.updateCoin(member);
+				logger.info("Welcome voting End! "+ member.toString());
+
+			}
+		});
+		
+		model.addAttribute("doc_title", "BBS 상세보기");
+		model.addAttribute("bbs", 
+				jYLMBoardService.getBbs(mboard));
+		model.addAttribute("bbslist", 
+				jYLMBoardService.getBbsList());
+		return "bbsdetail.tiles";
+	}
 	
 	@RequestMapping(value = "bbswrite.do", 
 			method = RequestMethod.GET)

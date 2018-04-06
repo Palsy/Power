@@ -12,6 +12,8 @@
 	      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
 		    <c:if test="${login.id ne ''}">
+		    	<li>${login.id} : </li>
+		    	<li>${login.coin} Coin</li>
 				<li><a class="waves-effect waves-light btn modal-trigger" href="#" onclick="url_logout();">로그아웃</a></li>
 			</c:if>
 	      </ul>
@@ -50,9 +52,10 @@
 			  <a href="#email"><span class="white-text email">${login.email}</span></a>
 		  </div>
 	  </li>
-	  <li><a class="waves-effect" href="#"><i class="material-icons">cloud</i>My Page</a></li>
-	  <li><a href="#">Second Link</a></li>
+	  <li><a class="waves-effect waves-light btn modal-trigger" href="#" onclick="url_logout();">로그아웃</a></li>
 	  <li><div class="divider"></div></li>
-	  <li><a class="subheader">Subheader</a></li>
-	  <li><a class="waves-effect" href="#">Third Link With Waves</a></li>
+	  <li><a class="waves-effect" href="#"><i class="material-icons">attach_money</i><span class="new badge red" data-badge-caption="Coin">${login.coin}</span>My Coin</a></li>
+	  <li><div class="divider"></div></li>
+	  <li><a class="subheader">코인 사용처</a></li>
+	  <li><a class="waves-effect" href="#">코인 보내기</a></li>
   </ul>

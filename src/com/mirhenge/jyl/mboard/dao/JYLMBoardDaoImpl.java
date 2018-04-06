@@ -67,6 +67,13 @@ public class JYLMBoardDaoImpl implements JYLMBoardDao {
 		return sqlSession.selectOne(ns+"preView",seq);
 	}
 
+	@Override
+	public void voteBbs(JYLMBoard bbs) {
+		// TODO Auto-generated method stub
+		sqlSession.update(ns+"voteBbs",bbs);
+
+	}
+
 	
 
 }

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mirhenge.jyl.mboard.dao.JYLMBoardService;
 
@@ -23,16 +24,10 @@ public class AJAXBBSController {
 	@Autowired
 	private JYLMBoardService jYLMBoardService;
 
-	@RequestMapping(value="boardAjax.do")
+	@RequestMapping(value="boardAjax.do",method=RequestMethod.GET)
 	public void ajaxlist(HttpServletRequest req, HttpServletResponse res) throws IOException {
-		int seq = Integer.parseInt(req.getParameter("seq"));
-		req.setCharacterEncoding("utf-8");
-		res.setContentType("text/html; charset=utf-8");
-		res.setHeader("Cache Controll", "no-cache");
-		
-		String preContent = jYLMBoardService.preView(seq);
-		PrintWriter out = res.getWriter();
-		out.print(preContent);
+
+		logger.info("ajaxxxxxxxxxxxxxxxxxxxxxx ");
 	}
 	
 }

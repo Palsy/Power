@@ -6,17 +6,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="addMember"  
 	parameterType="com.mirhenge.jyl.member.model.JYLMember">
-		INSERT INTO JYL_MEMBER (ID,NAME,EMAIL,PWD,FILENAME, DELFLAG, AUTH)
-		VALUES(#{id},#{name},#{email},#{pwd},#{filename},0,3) 
+		INSERT INTO JYL_MEMBER (ID,NAME,EMAIL,PWD,FILENAME, DELFLAG, AUTH, COIN)
+		VALUES(#{id},#{name},#{email},#{pwd},#{filename},0,3,1000) 
 	</insert>
 	<select id="checkMember"
 	parameterType="com.mirhenge.jyl.member.model.JYLMember"
 	resultType="com.mirhenge.jyl.member.model.JYLMember">
-		SELECT ID,NAME,FILENAME,EMAIL,DELFLAG, AUTH
+		SELECT ID,NAME,FILENAME,EMAIL,DELFLAG, AUTH,COIN
 		FROM JYL_MEMBER
 		WHERE ID=#{id} AND PWD=#{pwd}
 	</select>
-
+	
+	<insert id="updateCoin"  
+	parameterType="com.mirhenge.jyl.member.model.JYLMember">
+		UPDATE JYL_MEMBER SET COIN=COIN+#{coin}
+		WHERE ID=#{id}
+	</insert>
 	<select id="getID"
 	resultType="java.lang.Integer"
 	parameterType="com.mirhenge.jyl.member.model.JYLMember">

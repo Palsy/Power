@@ -36,4 +36,10 @@ public class JYLMemberDaoImpl implements JYLMemberDao {
 		return sqlSession.selectList(ns+"getIDList");
 	}
 
+	@Override
+	public void updateCoin(JYLMember member) {
+		// TODO Auto-generated method stub
+		sqlSession.insert(ns+"updateCoin",member);
+	}
+
 }

@@ -39,4 +39,10 @@ public class JYLMemberServiceImpl implements JYLMemberService {
 		return jYLMemberDao.getIDList();
 	}
 
+	@Override
+	public void updateCoin(JYLMember member) {
+		// TODO Auto-generated method stub
+		jYLMemberDao.updateCoin(member);
+	}
+
 }

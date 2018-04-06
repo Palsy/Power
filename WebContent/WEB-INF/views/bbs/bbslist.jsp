@@ -13,6 +13,7 @@
 <!-- </head> -->
 
 <form name="frmForm1" id="_frmFormSearch" method="post" action="">
+
 <!-- 
 <table style="margin-left:auto; margin-right:auto; margin-top:3px; margin-bottom:3px; border:0; padding:0;">
 <tr>
@@ -36,26 +37,40 @@
 
 <div class="container">
 		<c:if test="${empty bbslist}">
-			<tr>
-				<td colspan="3">작성된 글이 없습니다.</td>
-			</tr>
+			<div>
+				작성된 글이 없습니다.
+			</div>
 		</c:if>
+		
 		<c:forEach items="${bbslist}" var="bbs" varStatus="vs">
 			<c:if test="${bbs.step eq 0}">
 				<div class="card">
-				  <div class="card-content">
-				  	<c:if test="${empty bbs.idfilename}"> 
-				  		<img width="30px" height="30px" src="./image/blank-person.jpg"/>
-				  	</c:if>
-				  	<c:if test="${not empty bbs.idfilename}"> 
-				  		<img width="30px" height="30px" src="./upload/${bbs.idfilename}"/>
-				    </c:if>
-				    <a href='bbsdetail.do?seq=${bbs.seq}' class="card-title activator grey-text text-darken-4">${bbs.title}<i class="material-icons right">more_vert</i></a>
-				    <p><a href="#">${bbs.content}</a></p>
+				  <div class="card-content" style="padding-bottom: 10px;">
+				  	<div class="row">
+				  		<div class="col s2 m1">
+				  		<c:if test="${empty bbs.idfilename}"> 
+					  		<img class="circle" width="50px" height="50px" src="./image/blank-person.jpg"/>
+					  	</c:if>
+					  	<c:if test="${not empty bbs.idfilename}"> 
+					  		<img class="circle" width="50px" height="50px" src="./upload/${bbs.idfilename}"/>
+					    </c:if>
+				  		</div>
+				  		
+				  		<div class="col s10 m11">
+				  		<h4 style="margin-top: 10px;"><a href='bbsdetail.do?seq=${bbs.seq}' class="card-title activator grey-text text-darken-4">${bbs.title}</a></h4>
+				  		</div>
+				  		<!-- 
+				  		<span class="new badge red" data-badge-caption="Hot"></span>
+				  		 -->
+				  		<div class="col s12">
+				  		<p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden; margin-top: 10px;"><b>Q : </b> ${bbs.content}
+				  		</p>
+				  		</div>
+				  	</div>
 				  </div>
 				</div>
 			</c:if>
-		</c:forEach>	  
+		</c:forEach>
 </div>
 
 <div class="fixed-action-btn">
@@ -88,8 +103,13 @@ $(document).ready(function() {
 		$(this).children().css("background-color","#F0F5FF");
 	}).mouseout(function() {
 		$(this).children().css("background-color","#FFFFFF");
-	});				
+	});
+	
+	
+	
 });
+
+
 $("#_btnAdd").click(function() {	
 	alert('글쓰기');	
 	$("#_frmForm").attr({ "target":"_self", "action":"bbswrite.do" }).submit();

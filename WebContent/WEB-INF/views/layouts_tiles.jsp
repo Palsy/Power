@@ -10,7 +10,7 @@
 	<head>
 		<tiles:insertAttribute name="header"/>
 	</head>
-	<body>
+	<body style="background: floralwhite;">
 		<div id="body_wrap">
 			<div id="main_wrap">
 				<div id="header_wrap">

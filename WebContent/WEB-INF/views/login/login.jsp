@@ -8,46 +8,49 @@
 <title>Booky</title>
 		
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/materialize/css/materialize.css">
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		
+		<link rel="stylesheet" href="<%=request.getContextPath()%>/materialize/css/materialize.css">
 </head>
-<body style="background-color: lightgray;">
+<body style="background-color: floralwhite;">
   <!-- Modal Structure -->
-  <div id="login_modal_1" class="modal">
+  <div id="login_modal_1" class="modal bottom-sheet" style="width: 400px;">
     <div class="modal-content">
 	   	<div class="container"> 
-	 	<div class="row">
 	 	<h4>Login</h4>
 	
 	<form class="col s12" name="frmForm" id="_frmForm" action="loginAf.do" method="post">
-	  <div class="row">
-	    <div class="input-field col s12">
-	      <input type="text" id="_userid" name="id" data-msg="ID를" class="validate">
-	      <label for="아이디">아이디</label>
-	    </div>
-	    	<label>
-	       	 <input type="checkbox"  id="_chk_save_id"/>
-	        	<span>ID 저장</span>
-	      	</label>
-	  </div>
-	  <div class="row">
-	    <div class="input-field col s12">
-	      <input type="password" id="_pwd" name="pwd" value="" class="validate">
-	      <label for="비밀번호">비밀번호</label>
-	    </div>
-	  </div>
+		
+		  <div class="row">
+		    <div class="input-field col s12">
+		      <input type="text" id="_userid" name="id" data-msg="ID를" class="validate">
+		      <label for="아이디">아이디</label>
+		    </div>
+		    <!-- 
+		    	<label>
+		       	 <input type="checkbox"  id="_chk_save_id"/>
+		        	<span>ID 저장</span>
+		      	</label>
+		      	-->
+		    <div class="input-field col s12">
+		      <input type="password" id="_pwd" name="pwd" value="" class="validate">
+		      <label for="비밀번호">비밀번호</label>
+		  </div>
+		  </div>
+		  
 	</form>
 	
-	<a href="regi.do" title="회원가입">아직 Booky의 회원이 아니신가요?</a>
+	<div>
+		<a href="regi.do" title="회원가입">아직 Booky의 회원이 아니신가요?</a><br>
+		<a id="_btnLogin" class="waves-light btn btn-block modal-trigger" href="#none">로그인</a>
+	</div>
 	
-	 </div>
-	 	<a id="_btnLogin" class="waves-effect waves-light btn modal-trigger" href="#none">로그인</a>
 	 	
     </div>
     </div>
+    
   </div>
-  <!-- Modal End -->
 
   <nav class="nav-extended">
   	<div class="container">
@@ -84,7 +87,6 @@
 	  </li>
 	  <li><a class="waves-effect waves-light btn modal-trigger" href="#login_modal_1">로그인</a></li>
   </ul>
-
 	<div class="container">
 		<div class="card">
 		  <div class="card-content">

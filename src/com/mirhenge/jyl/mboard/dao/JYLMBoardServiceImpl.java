@@ -71,6 +71,12 @@ public class JYLMBoardServiceImpl implements JYLMBoardService {
 		return jYLMBoardDao.preView(seq);
 	}
 
+	@Override
+	public void voteBbs(JYLMBoard bbs) {
+		// TODO Auto-generated method stub
+		jYLMBoardDao.voteBbs(bbs);
+	}
+
 
 
 }

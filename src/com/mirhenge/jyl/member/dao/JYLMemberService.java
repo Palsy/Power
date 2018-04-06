@@ -10,4 +10,5 @@ public interface JYLMemberService {
 	JYLMember checkMember(JYLMember member);
 	int getID(JYLMember member);
 	List<JYLMember> getIDList();
+	void updateCoin(JYLMember member);
 }
