@@ -42,6 +42,7 @@ public class BbsController {
 			HttpURLConnection con = (HttpURLConnection)obj.openConnection();
 			con.setRequestMethod("GET");
 			logger.info("----- Restful Success :"+con.getResponseCode());
+			con.disconnect();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			logger.info("Restful Error");
