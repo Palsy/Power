@@ -61,15 +61,6 @@
 	        <li><a class="waves-effect waves-light btn modal-trigger" href="#login_modal_1">로그인</a></li>
 	      </ul>
 	    </div>
-    
-    <div class="nav-content">
-      <ul class="tabs tabs-transparent">
-        <li class="tab"><a class="active" href="#test1">인기 질문</a></li>
-        <li class="tab"><a href="#">Item 2</a></li>
-        <li class="tab"><a href="#">Item 3</a></li>
-        <li class="tab"><a href="tab4.do">Item 4</a></li>
-      </ul>
-    </div>
     </div>
   </nav>
 
@@ -87,46 +78,50 @@
 	  </li>
 	  <li><a class="waves-effect waves-light btn modal-trigger" href="#login_modal_1">로그인</a></li>
   </ul>
-	<div class="container">
-		<div class="card">
-		  <div class="card-content">
-		    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-		    <p><a href="#">This is a link</a></p>
-		  </div>
-		</div>
-		
-		<div class="card">
-		  <div class="card-content">
-		    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-		    <p><a href="#">This is a link</a></p>
-		  </div>
-		</div>  
-		
-		<div class="card">
-		  <div class="card-content">
-		    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-		    <p><a href="#">This is a link</a></p>
-		  </div>
-		</div>  
-  	</div>
-  <div class="fixed-action-btn">
-  <a class="btn-floating btn-large red">
-    <i class="large material-icons">mode_edit</i>
-  </a>
-  <ul>
-    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-  </ul>
-</div>
-
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.cookie.js"></script>
-		<script type="text/javascript" src="<%=request.getContextPath()%>/materialize/js/materialize.js"></script>
+  
+<div class="carousel carousel-slider center">
+    <div class="carousel-fixed-item center">
+      <a class="btn waves-effect white grey-text darken-text-2">button</a>
+    </div>
+    <div class="carousel-item red white-text" href="#one!">
+      <h2>First Panel</h2>
+      <p class="white-text">This is your first panel</p>
+    </div>
+    <div class="carousel-item amber white-text" href="#two!">
+      <h2>Second Panel</h2>
+      <p class="white-text">This is your second panel</p>
+    </div>
+    <div class="carousel-item green white-text" href="#three!">
+      <h2>Third Panel</h2>
+      <p class="white-text">This is your third panel</p>
+    </div>
+    <div class="carousel-item blue white-text" href="#four!">
+      <h2>Fourth Panel</h2>
+      <p class="white-text">This is your fourth panel</p>
+    </div>
+ </div>
+ 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/materialize/js/materialize.js"></script>
 		
 <script type="text/javascript">
+
+
+var instance = M.Carousel.init({
+    fullWidth: true,
+    indicators: true
+  });
+
+  // Or with jQuery
+
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    indicators: true
+  });
+
 			$("#_btnLogin").click(function() {
+				
 				if ($("#_userid").val() == "") {
 					alert($("#_userid").attr("data-msg") + " 입력해 주십시요.");
 					$("#_userid").focus();
@@ -134,7 +129,6 @@
 					alert($("#_pwd").attr("data-msg") + " 입력해 주십시요.");
 					$("#_pwd").focus();
 				} else {
-					//$("#_frmForm").attr("target","ifrmSpace").submit();
 					$("#_frmForm").attr("target","_self").submit();
 				}
 			});
@@ -184,6 +178,11 @@
 
 		  $(document).ready(function(){
 		    $('.sidenav').sidenav();
+
+			//var xhttp = new XMLHttpRequest();
+		   // xhttp.open("GET", "http://175.128.83.242:5100/trans", true);
+		  //  xhttp.send();
+	
 		  });
 		  
 		  var elem = document.querySelector('.modal');

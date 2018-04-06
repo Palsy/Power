@@ -3,54 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <fmt:requestEncoding value="utf-8" />
 
-
-<form id="_frmForm">
-	<input type="hidden" name="seq"   value="${bbs.seq}"/>
-	<c:if test="${bbs.id eq login.id}">
-	<a href="#none" id="_btnUpdate" title="글수정하기"><img src="image/bupdate.png" alt="수정하기" /></a>
-	</c:if>
-	<c:if test="${bbs.id ne login.id}">
-		<a href="#none" id="_btnReply" title="답글달기"><img src="image/breply.png" alt="답글달기" /></a>
-	</c:if>
-</form>
-
 <div class="container">
-
-	<!--  
-    <c:if test="${empty bbs.idfilename}"> 
-			<img style="width:30px; height:30px;" class="circle" src="./image/blank-person.jpg"/>
-		</c:if>
-		<c:if test="${not empty bbs.idfilename}"> 
-			<img style="width:30px; height:30px;" class="circle" src="./upload/${bbs.idfilename}"/>
-		</c:if>
-	
-	 <div class="row">
-	  <form class="col s12">
-	    <div class="row">
-	      <div class="input-field col s12">
-	        <i class="material-icons prefix">mode_edit</i>
-	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.id}</textarea>
-	        <label for="icon_prefix2">First Name</label>
-	      </div>
-	      <div class="input-field col s12">
-	        <i class="material-icons prefix">mode_edit</i>
-	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.title}</textarea>
-	        <label for="icon_prefix2">First Name</label>
-	      </div>
-	      <div class="input-field col s12">
-	        <i class="material-icons prefix">mode_edit</i>
-	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.content}</textarea>
-	        <label for="icon_prefix2">First Name</label>
-	      </div>
-	      <div class="input-field col s12">
-	        <i class="material-icons prefix">mode_edit</i>
-	        <textarea id="icon_prefix2" class="materialize-textarea">${bbs.wdate}</textarea>
-	        <label for="icon_prefix2">First Name</label>
-	      </div>
-	    </div>
-	  </form>
-	</div>
-	-->
 
 	<div class="row">
 		<div class="col s12 m12">
@@ -78,34 +31,23 @@
 			</div>
 		</div>
 	</div>
-
-	<ul class="collapsible">
-		<li class="active">
-			<div class="collapsible-header">
-				<div class="row">
-					<div class="col s12">
-						<blockquote></blockquote>
-					</div>
-					<div class="col s12">
-						<c:if test="${empty bbs.idfilename}">
-							<img style="width: 30px; height: 30px;" class="circle"
-								src="./image/blank-person.jpg" />
-						</c:if>
-						<c:if test="${not empty bbs.idfilename}">
-							<img style="width: 30px; height: 30px;" class="circle"
-								src="./upload/${bbs.idfilename}" />
-						</c:if>
-						${bbs.id} ${bbs.wdate}
-					</div>
-				</div>
-			</div>
-			<div class="collapsible-body">
-				<span>${bbs.content}</span>
-			</div>
-		</li>
-	</ul>
-
-
+	
+	
+		
+	<form id="_frmForm">
+		<input type="hidden" name="seq"   value="${bbs.seq}"/>
+		
+		<c:if test="${bbs.id eq login.id}">
+		<a class="btn btn-block" href="#" id="_btnUpdate" title="글수정하기">수정</a>
+		</c:if>
+		<c:if test="${bbs.id ne login.id}">
+			<a class="btn btn-block" href="#" id="_btnReply" title="답글달기">답글</a>
+		</c:if>
+		
+	</form>
+	
+	<div class="divider"></div>
+	
 	<ul class="collapsible popout">
 		<c:forEach items="${bbslist}" var="candidate" varStatus="vs">
 			<c:if test="${candidate.parent eq bbs.seq}">
@@ -118,13 +60,23 @@
 							<img style="width: 30px; height: 30px;" class="circle"
 								src="./upload/${candidate.idfilename}" />${candidate.title}</div>
 					</c:if>
-					<div class="collapsible-body">
-						<span>${candidate.content}</span> <a id="voting" href="voting.do?seq=${bbs.seq}&update_id=${candidate.seq}"><i class="small material-icons" style="margin-right: 10px;">thumb_up</i><p>${candidate.vote}</p></a>
-					</div></li>
-
+					<div class="collapsible-body" style="display: block;background-color: white;">
+						<span>${candidate.content}</span>
+					</div>
+					
+					<div class="row" style="background-color: white;">
+						<div class="col s6 m6">
+							<a id="voting" class="btn btn-block" href="voting.do?seq=${bbs.seq}&update_id=${candidate.seq}"><i class="small material-icons" style="margin-right: 10px;">thumb_up</i>${candidate.vote}</a>
+						</div>
+						<div class="col s6 m6">
+						<a id="voting2" class="btn btn-block" href="#" style="background-color: #ee6e73;"><i class="small material-icons" style="margin-right: 10px;">thumb_down</i>0</a>
+						</div>
+					</div>
+				</li>
 			</c:if>
 		</c:forEach>
 	</ul>
+	
 	<c:if test="${bbs.id eq login.id}">
 		<a href="votingEnd.do?seq=${bbs.seq}"> 투표종료</a>
 	</c:if>

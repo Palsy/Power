@@ -14,7 +14,7 @@
 
 <form name="frmForm1" id="_frmFormSearch" method="post" action="">
 
-<!-- 
+<!--
 <table style="margin-left:auto; margin-right:auto; margin-top:3px; margin-bottom:3px; border:0; padding:0;">
 <tr>
 	<td>검색 : </td>
@@ -47,7 +47,7 @@
 				<div class="card">
 				  <div class="card-content" style="padding-bottom: 10px;">
 				  	<div class="row">
-				  		<div class="col s2 m1">
+				  		<div class="col s3 m1">
 				  		<c:if test="${empty bbs.idfilename}"> 
 					  		<img class="circle" width="50px" height="50px" src="./image/blank-person.jpg"/>
 					  	</c:if>
@@ -56,7 +56,7 @@
 					    </c:if>
 				  		</div>
 				  		
-				  		<div class="col s10 m11">
+				  		<div class="col s9 m11">
 				  		<h4 style="margin-top: 10px;"><a href='bbsdetail.do?seq=${bbs.seq}' class="card-title activator grey-text text-darken-4">${bbs.title}</a></h4>
 				  		</div>
 				  		<!-- 
@@ -104,9 +104,6 @@ $(document).ready(function() {
 	}).mouseout(function() {
 		$(this).children().css("background-color","#FFFFFF");
 	});
-	
-	
-	
 });
 
 

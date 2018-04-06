@@ -23,6 +23,9 @@ import com.mirhenge.jyl.mboard.help.YesMember;
 import com.mirhenge.jyl.member.dao.JYLMemberService;
 import com.mirhenge.jyl.member.model.JYLMember;
 import com.mirhenge.jyl.pds.help.FUpUtil;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 @Controller
 public class LoginController {
@@ -35,6 +38,21 @@ public class LoginController {
 	@RequestMapping(value = "login.do", 
 			method = RequestMethod.GET)
 	public String login(Model model) {
+		
+		URL obj;
+		try {
+			obj = new URL("http://192.168.55.78:5100/trans");
+
+			HttpURLConnection con = (HttpURLConnection)obj.openConnection();
+			con.setRequestMethod("GET");
+			logger.info("----- Restful Success :"+con.getResponseCode());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.info("Restful Error");
+			e.printStackTrace();
+		}
+
+		
 		logger.info("Welcome LoginController login! "+ new Date());
 		model.addAttribute("head", "WELCOME");
 		return "login.tiles";

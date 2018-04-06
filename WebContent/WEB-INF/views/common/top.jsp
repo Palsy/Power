@@ -21,10 +21,12 @@
     	
     	<div class="nav-content">
 			<ul class="tabs tabs-transparent">
-		        <li class="tab"><a href="#none" onclick="url_bbslist();" title="답변형게시판">답변형게시판</a></li>							
-				<li class="tab"><a href="#none" onclick="url_pdslist();" title=자료실>자료실</a></li>	
+		        <li class="tab"><a href="#none" onclick="url_bbslist();" title="답변형게시판">질문답변</a></li>							
+				<!-- 
+				<li class="tab"><a href="#none" onclick="url_pdslist();" title=자료실>자료실</a></li>
 				<li class="tab"><a href="#none" onclick="url_calendar();" title="일정관리">일정관리</a></li>
 				<li class="tab"><a href="#none" onclick="url_polllist();" title="투표하기">투표하기</a></li>	
+				 -->
 			</ul>
 		</div>
     </div>

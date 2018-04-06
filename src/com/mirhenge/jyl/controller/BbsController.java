@@ -1,5 +1,7 @@
 package com.mirhenge.jyl.controller;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +34,21 @@ public class BbsController {
 	@RequestMapping(value = "bbslist.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
 	public String bbslist(BbsParam param,Model model) throws Exception {
+		
+		URL obj;
+		try {
+			obj = new URL("http://192.168.55.78:5100/trans");
+
+			HttpURLConnection con = (HttpURLConnection)obj.openConnection();
+			con.setRequestMethod("GET");
+			logger.info("----- Restful Success :"+con.getResponseCode());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.info("Restful Error");
+			e.printStackTrace();
+		}
+
+		
 		logger.info("Welcome FintechBBSController bbslist! "+ new Date());
 		
 		int sn=param.getPageNumber();
@@ -141,6 +158,22 @@ public class BbsController {
 	@RequestMapping(value = "bbsdetail.do", 
 			method = {RequestMethod.GET,RequestMethod.POST})
 	public String bbsdetail(JYLMBoard mboard, Model model) {
+		
+		URL obj;
+		try {
+			obj = new URL("http://192.168.55.78:5100/trans");
+
+			HttpURLConnection con = (HttpURLConnection)obj.openConnection();
+			con.setRequestMethod("GET");
+			logger.info("----- Restful Success :"+con.getResponseCode());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.info("Restful Error");
+			e.printStackTrace();
+		}
+
+		
+		
 		logger.info("Welcome BBSController bbsdetail! "+ new Date());
 		model.addAttribute("doc_title", "BBS 상세보기");
 		model.addAttribute("bbs", 
