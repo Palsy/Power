@@ -61,6 +61,15 @@
 	        <li><a class="waves-effect waves-light btn modal-trigger" href="#login_modal_1">로그인</a></li>
 	      </ul>
 	    </div>
+    
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a class="active" href="#test1">Q & A</a></li>
+        <li class="tab"><a href="#">질문 등록</a></li>
+        <li class="tab"><a href="#">My Page</a></li>
+        <li class="tab"><a href="tab4.do">Coins</a></li>
+      </ul>
+    </div>
     </div>
   </nav>
 
@@ -78,47 +87,143 @@
 	  </li>
 	  <li><a class="waves-effect waves-light btn modal-trigger" href="#login_modal_1">로그인</a></li>
   </ul>
-  
-<div class="carousel carousel-slider center">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <div class="carousel-item red white-text" href="#one!">
-      <h2>First Panel</h2>
-      <p class="white-text">This is your first panel</p>
-    </div>
-    <div class="carousel-item amber white-text" href="#two!">
-      <h2>Second Panel</h2>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Third Panel</h2>
-      <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
-    </div>
- </div>
- 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.cookie.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/materialize/js/materialize.js"></script>
+	
+	<div class="container">
+
+		<div class="card">
+		  <div class="card-content" style="padding-bottom: 10px;">
+		  	<div class="row">
+		  		<div class="col s3 m1">
+			  		<img class="circle" width="50px" height="50px" src="./upload/3.jpg"/>
+		  		</div>
+		  		
+		  		<div class="col s9 m11">
+		  		<h4 style="margin-top: 10px;">
+		  			<a href='#' class="card-title activator grey-text text-darken-4">부동산 매매 후 하자보수 관련</a>
+		  		</h4>
+		  		</div>
+		  		
+		  		<div class="col s12">
+		  		<p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden; margin-top: 10px;"><b>Q : </b> 부동산 매매 계약서 특약사항에 아래와 같이 명시한 후 거래 완료하였습니다. (잔금 완료) [건물의 노후로 인하여
+		  		</p>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+		
+		<div class="card">
+		  <div class="card-content" style="padding-bottom: 10px;">
+		  	<div class="row">
+		  		<div class="col s3 m1">
+			  		<img class="circle" width="50px" height="50px" src="./upload/2.jpg"/>
+		  		</div>
+		  		
+		  		<div class="col s9 m11">
+		  		<h4 style="margin-top: 10px;">
+		  			<a href='#' class="card-title activator grey-text text-darken-4">건물경매 시 월세 보증금</a>
+		  		</h4>
+		  		</div>
+		  		
+		  		<div class="col s12">
+		  		<p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden; margin-top: 10px;"><b>Q : </b> 현재 빌라에 월세로 살고있는데요 (200/30) 16년에 1년 계약했다가 그냥 더 사는식으로 얘기해서 따로 계약
+		  		</p>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+		
+		<div class="card">
+		  <div class="card-content" style="padding-bottom: 10px;">
+		  	<div class="row">
+		  		<div class="col s3 m1">
+			  		<img class="circle" width="50px" height="50px" src="./upload/1.jpg"/>
+		  		</div>
+		  		
+		  		<div class="col s9 m11">
+		  		<h4 style="margin-top: 10px;">
+		  			<a href='#' class="card-title activator grey-text text-darken-4">쌍방폭행 관련 문의합니다</a>
+		  		</h4>
+		  		</div>
+		  		
+		  		<div class="col s12">
+		  		<p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden; margin-top: 10px;"><b>Q : </b> 쌍방폭행이었는데 상대방은 상처가 남았지만 저는 상처가 없는 상황입니다. 상대방은 상해진단서를 제출한
+		  		</p>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+		
+		<div class="card">
+		  <div class="card-content" style="padding-bottom: 10px;">
+		  	<div class="row">
+		  		<div class="col s3 m1">
+			  		<img class="circle" width="50px" height="50px" src="./upload/3.jpg"/>
+		  		</div>
+		  		
+		  		<div class="col s9 m11">
+		  		<h4 style="margin-top: 10px;">
+		  			<a href='#' class="card-title activator grey-text text-darken-4">펀드 매입,기준가 질문</a>
+		  		</h4>
+		  		</div>
+		  		
+		  		<div class="col s12">
+		  		<p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden; margin-top: 10px;"><b>Q : </b> 펀드시작한 초보입니다 이틀전에 펀드 매입을했는데 이틀뒤 완전히 매입이 된다고하더라고요 근데 내일 
+		  		</p>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+		
+		<div class="card">
+		  <div class="card-content" style="padding-bottom: 10px;">
+		  	<div class="row">
+		  		<div class="col s3 m1">
+			  		<img class="circle" width="50px" height="50px" src="./upload/3.jpg"/>
+		  		</div>
+		  		
+		  		<div class="col s9 m11">
+		  		<h4 style="margin-top: 10px;">
+		  			<a href='#' class="card-title activator grey-text text-darken-4">청약통장 해지할까요?</a>
+		  		</h4>
+		  		</div>
+		  		
+		  		<div class="col s12">
+		  		<p style="text-overflow: ellipsis;white-space: nowrap; overflow: hidden; margin-top: 10px;"><b>Q : </b>  현재 스무살이구요 5년 정도 전에 신한 청약통장 상품을 가입해놓은 적이 있습니다. 그냥 돈 좀 남으면 조금씩
+		  		</p>
+		  		</div>
+		  	</div>
+		  </div>
+		</div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+  <div class="fixed-action-btn">
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">mode_edit</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+    <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+    <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+    <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+  </ul>
+</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/materialize/js/materialize.js"></script>
 		
 <script type="text/javascript">
-
-
-var instance = M.Carousel.init({
-    fullWidth: true,
-    indicators: true
-  });
-
-  // Or with jQuery
-
-  $('.carousel.carousel-slider').carousel({
-    fullWidth: true,
-    indicators: true
-  });
 
 			$("#_btnLogin").click(function() {
 				

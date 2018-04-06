@@ -1,40 +1,151 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/froala_editor.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/froala_style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/code_view.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/colors.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/emoticons.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/image_manager.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/image.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/line_breaker.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/table.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/char_counter.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/video.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/fullscreen.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/froala/css/plugins/file.css">
 <fmt:requestEncoding value="utf-8"/>
+
+
+<style>
+<!--
+/* label color */
+   .input-field label {
+     color: #26a69a;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #26a69a;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #26a69a;
+     box-shadow: 0 1px 0 0 #26a69a;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #26a69a;
+     box-shadow: 0 1px 0 0 #26a69a;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #26a69a;
+     box-shadow: 0 1px 0 0 #26a69a;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #26a69a;
+   }
+-->
+</style>
+
+<div class="container" style="margin-top: 30px;">	
+	<div class="row">
+	   <form name="frmForm" id="_frmForm" method="post" action="">
+	   
+	   <input type="hidden" name="id" readonly="readonly" value='${login.id}' size="60">
+	   <input type="hidden" name="title" size="60" id="title_text"/>
+	   <input type="hidden" name="idfilename" value='${login.filename}'/>
+	   
+	   <input type="hidden" size="60"/>
+	    <div class="row">
+	      <div class="input-field col s12">
+	        <input id="icon_prefix" type="text" class="validate"/>
+	        <label for="icon_prefix">제목</label>
+	      </div>
+	    </div>
+	    
+		<section id="editor" style="margin-bottom: 20px;">
+			<div id='edit' style="margin-top: 30px;">
+			</div>
+		</section>
+		
+		<input id="_content" type="hidden" class="validate" name="content">
+	  
+	  </form>
+	  
+	   <div class="row">
+	   	<div class="col s12">
+	  		<a id="_btnUpdate" class="btn btn-block">수정하기</a>
+	   	</div>
+	   </div>
+	</div>
+</div>
+
+<!-- 
+
 <form name="frmForm" id="_frmForm" method="post" action="">
-<table class="list_table" style="width:85%;">
-<input type="hidden" name="seq"   value="${bbs.seq}"/>
-<colgroup>
-<col style="width:200px;" />
-<col style="width:auto;" />
-</colgroup>
-<tbody>	
-<tr class="id">
-<th>아이디</th>
-<td style="text-align: left">${bbs.id}</td>
-</tr>
-<tr>
-<th>제목</th><td style="text-align: left"><input size="60" type="text" name="title" value='${bbs.title}' ></td>
-</tr>
-<tr>
-<th>작성일</th><td style="text-align: left">${bbs.wdate}</td>
-</tr>
-<tr>
-<th>내용</th>
-<td style="text-align: left"><textarea rows="10" cols="50" 
-name='content' id="_content">${bbs.content}</textarea></td>
-</tr>
-<tr>
-<td colspan="2" style="height:50px; text-align:center;">
-		<span><a href="#none" id="_btnUpdate" title="글수정하기"><img src="image/bupdate.png" alt="수정하기" /></a>
-</span>
-</td>
-</tr>
-</tbody>
-</table>
+	<input type="hidden" name="seq"   value="${bbs.seq}"/>
+	<input size="60" type="text" name="title" value='${bbs.title}' />
+	<textarea rows="10" cols="50" 
+	name='content' id="_content">${bbs.content}</textarea>
+	
+	<a href="#none" id="_btnUpdate" title="글수정하기"><img src="image/bupdate.png" alt="수정하기" /></a>
+
 </form>
+ -->
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/froala_editor.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/align.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/code_beautifier.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/code_view.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/colors.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/draggable.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/emoticons.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/font_size.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/font_family.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/image.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/file.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/image_manager.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/line_breaker.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/link.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/lists.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/paragraph_format.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/paragraph_style.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/video.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/table.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/url.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/entities.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/char_counter.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/inline_style.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/save.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/fullscreen.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/js/plugins/quote.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/froala/textversion.js"></script>
+ 
+ 
 <script type="text/javascript">
+
+$(function(){
+    $('#edit').froalaEditor({
+      theme: 'royal'
+    });
+  });
+
+var elem = document.querySelector('.sidenav');
+var instance = M.Sidenav.init(elem, 'left');
+
+// Or with jQuery
+
+$(document).ready(function(){
+$('.sidenav').sidenav();
+});
+
 $("#_btnUpdate").click(function() {	
 	alert('글수정하기');	
 	//submitContents($("#_frmForm"));

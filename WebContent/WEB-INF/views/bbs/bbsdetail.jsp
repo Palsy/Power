@@ -17,48 +17,38 @@
 					</h3>
 					<p>${bbs.content}</p>
 				</div>
-				<div class="card-action">
+				<div class="card-action" style="padding-bottom: 1px;">
 					<c:if test="${empty bbs.idfilename}">
 						<img style="width: 30px; height: 30px;" class="circle"
 							src="./image/blank-person.jpg" />
 					</c:if>
 					<c:if test="${not empty bbs.idfilename}">
-						<img style="width: 30px; height: 30px;" class="circle"
-							src="./upload/${bbs.idfilename}" />
+						<div class="row">
+						<div class="col s3 m1">
+							<img style="width: 50px; height: 50px;" class="circle"src="./upload/${bbs.idfilename}" />
+						</div>
+						<div class="col s9 m11">
+							<h5 style="color:white;"> by ${bbs.id} - ${bbs.wdate}</h5>
+						</div>
+						</div>
 					</c:if>
-					<a href="#">This is a link</a> <a href="#">This is a link</a>
+					
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
-		
-	<form id="_frmForm">
-		<input type="hidden" name="seq"   value="${bbs.seq}"/>
-		
-		<c:if test="${bbs.id eq login.id}">
-		<a class="btn btn-block" href="#" id="_btnUpdate" title="글수정하기">수정</a>
-		</c:if>
-		<c:if test="${bbs.id ne login.id}">
-			<a class="btn btn-block" href="#" id="_btnReply" title="답글달기">답글</a>
-		</c:if>
-		
-	</form>
-	
-	<div class="divider"></div>
 	
 	<ul class="collapsible popout">
 		<c:forEach items="${bbslist}" var="candidate" varStatus="vs">
 			<c:if test="${candidate.parent eq bbs.seq}">
 				<li><c:if test="${empty candidate.idfilename}">
 						<div class="collapsible-header">
-							<img style="width: 30px; height: 30px;" class="circle"
-								src="./image/blank-person.jpg" />by ${candidate.id} <p style="font-size:20px"> ${candidate.title}</p></div>
+							<img style="width: 50px; height: 50px; margin-right: 10px;" class="circle"
+								src="./image/blank-person.jpg" /><h5>${candidate.title}</h5></div>
 					</c:if> <c:if test="${not empty candidate.idfilename}">
 						<div class="collapsible-header">
-							<img style="width: 30px; height: 30px;" class="circle"
-								src="./upload/${candidate.idfilename}" />${candidate.title}</div>
+							<img style="width: 50px; height: 50px; margin-right: 10px;" class="circle"
+								src="./upload/${candidate.idfilename}" /><h5>${candidate.title}</h5></div>
 					</c:if>
 					<div class="collapsible-body" style="display: block;background-color: white;">
 						<span>${candidate.content}</span>
@@ -76,10 +66,20 @@
 			</c:if>
 		</c:forEach>
 	</ul>
-	
-	<c:if test="${bbs.id eq login.id}">
-		<a href="votingEnd.do?seq=${bbs.seq}"> 투표종료</a>
-	</c:if>
+		
+	<form id="_frmForm">
+		<input type="hidden" name="seq"   value="${bbs.seq}"/>
+		
+		<c:if test="${bbs.id eq login.id}">
+			<a class="btn btn-block" href="#" id="_btnUpdate" title="글수정하기">수정</a>
+		</c:if>
+		<c:if test="${bbs.id ne login.id}">
+			<a class="btn btn-block" href="#" id="_btnReply" title="답글달기"><i class="small material-icons" style="margin-right: 10px;">question_answer</i>답글</a>
+		</c:if>
+		<c:if test="${bbs.id eq login.id}">
+			<a class= "btn btn-block" href="votingEnd.do?seq=${bbs.seq}"> 투표종료</a>
+		</c:if>
+	</form>
 </div>
 
 
@@ -93,13 +93,11 @@
 	});
 	
 	$("#voteEnd").click(function() {
-		alert("click vote end");
 		$(location).attr('href',"bbsdetail.do?id="+${bbs.id});
 		return false; 
 	});
 	
 	$("#_btnUpdate").click(function() {
-		alert('글수정하기');
 		//submitContents($("#_frmForm"),'bbsupdate.do');
 		$("#_frmForm").attr({
 			"target" : "_self",
@@ -107,7 +105,6 @@
 		}).submit();
 	});
 	$("#_btnReply").click(function() {
-		alert('답글달기');
 		//submitContents($("#_frmForm"),'bbsreply.do');
 		$("#_frmForm").attr({
 			"target" : "_self",
@@ -130,11 +127,4 @@
 		}
 	}
 
-	var oEditors = [];
-	nhn.husky.EZCreator.createInIFrame({
-		oAppRef : oEditors,
-		elPlaceHolder : "_content",
-		sSkinURI : "./se2/SmartEditor2Skin.html",
-		fCreator : "createSEditor2"
-	});
 </script>
